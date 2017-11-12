@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  .navbar-fixed
+    nav
+      .nav-wrapper(style='background-color: black; padding-left:2%')
+          a.brand-logo(style='font-family:"Lato", sans-serif')(href='#!') Mess Capacity Optimization
+  .row
+    .col.s.m4.l4
+      .card-panel.grey.lighten-5.z-depth-1
+        .row
+          p People taking lunch at mess at this time:
+          p(style='font-family: "Lato", monospace;')
+            each post, i in posts
+              span
+                strong #{post.totalCount}
+              //- if posts.timeStamp
+    .col.s12.m4.l4
+      .card-panel.grey.lighten-5.z-depth-1
+        .row
+          p Time analysys pie chart
+          p lorem ipsum lorem ipsum lorem ipsum
+    .col.s12.m4.l4
+      .card-panel.grey.lighten-5.z-depth-1
+        .row
+          p Net capacity of mess(Max. people take meal at a time.).
+          p(style='font-family: "Lucida Console", Monaco, monospace')
+            each post, i in posts
+              span #{post.totalCount}
+
+      // Import jQuery before materialize.js
+      script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+      script(type='text/javascript', src='js/materialize.min.js')
+      script.
+        $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 100 // Creates a dropdown of 15 years to control year
+        });
+      script.
+        $(document).ready(function() {
+        $('select').material_select();
+        });
